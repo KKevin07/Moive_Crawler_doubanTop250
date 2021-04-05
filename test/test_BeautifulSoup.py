@@ -107,6 +107,7 @@ import re
 t_list = bs.select("a[class='bri']")   #通过属性来查找  #条件：a标签中的属性中含“bri”
 
 
+
 for item in t_list:
     print(item)
 
