@@ -1,6 +1,6 @@
 '''
 BeautifulSoup4: 将复杂HEML文档转换成一个复杂的树形结构，
-                每个节点都是Python对象，对象共有四种：
+                每个节点都是Python对象，对象共有四种类型：
                 -Tag
                 -NavigableString
                 -BeautifulSoup
@@ -18,13 +18,13 @@ bs = BeautifulSoup(html,"html.parser") #用html.parser解析器 #用bs形成树�
 
 #print(type(bs.head))   #查询bs.head的类型，返回值为 class 'bs4.element.Tag'
 
-# 1. Tag  标签及其内容：拿到它找到的第一个内容
+# 类型1. Tag  标签及其内容：拿到它找到的第一个内容
 
 
 print(bs.title.string)         #只输出string字符内容，不打印Tag,返回值为 “百度一下，你就知道”
 print(type(bs.title.string))   #查询bs.title.string的类型，返回值为<class 'bs4.element.NavigableString'>
 
-
+# 类型2.NavigableString   标签里的字符串（内容）
 
 
 
