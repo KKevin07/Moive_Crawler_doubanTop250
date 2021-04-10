@@ -1,10 +1,12 @@
 '''
-BeautifulSoup4: 将复杂HEML文档转换成一个复杂的树形结构，
+BeautifulSoup4: 将复杂HTML文档转换成一个复杂的树形结构，
                 每个节点都是Python对象，对象共有四种类型：
                 -Tag
                 -NavigableString
                 -BeautifulSoup
                 -Comment
+BeautifulSoup4 使用作用：学会如何去定位想要的文本、标签
+               意义：在爬虫方法里提取有用的信息、数据，要熟练掌握，非常重要
 '''
 from bs4 import  BeautifulSoup
 
@@ -104,17 +106,19 @@ import re
 #t_list = bs.select('title')  #用过标签来查找
 #t_list = bs.select(".mnav")   #用类名来查找，"."指代类，"mnav"为类名
 #t_list = bs.select("#u1")     #用id来查找,"#"指代id
-t_list = bs.select("a[class='bri']")   #通过属性来查找  #条件：a标签中的属性中含“bri”
+#t_list = bs.select("a[class='bri']")   #通过属性来查找  #条件：a标签中的属性中含“bri”
 
+#t_list = bs.select("head>title")  #通过子标签来查找 #找<head>下的<title>
 
+#也可通过兄弟结点标签来查找
+t_list = bs.select(".mnav ~ .bri")    #与mnav类别同层次的bri类型
 
-for item in t_list:
-    print(item)
+print(t_list[0].get_text())  #print()方式下，get_text()拿到标签下的文本
 
+#for item in t_list:
+#    print(item)
 
-
-
-
+#———————————————————————分割线—————————————————————————————————————————————————————————————————————
 
 
 
