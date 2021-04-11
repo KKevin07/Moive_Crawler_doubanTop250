@@ -44,8 +44,16 @@ re库主要功能函数
     re.X    该标志通过给予你更灵活的格式以便你将正则表达式写得更易于理解
 
 '''
+import re
+#创建模式对象
 
-
+pat = re.compile("AA")  #"AA"为正则表达式，用于验证其他字符串
+#m = pat.search("CBA")          #此处字符串为被校验的字符串,返回值为 None
+#m = pat.search("CBAA")  #返回值为<re.Match object; span=(2, 4), match='AA'>
+                         #python的区间范围为左闭右开，即包含左端点，不包含右端点。
+                         #（0，4）表示包含0,1,2,3
+m = pat.search("CBAABCAA")   #返回值为<re.Match object; span=(2, 4), match='AA'>
+print(m)
 
 
 
