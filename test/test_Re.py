@@ -45,24 +45,38 @@ re库主要功能函数
 
 '''
 import re
-#创建模式对象
 
+#创建模式对象
 pat = re.compile("AA")  #"AA"为正则表达式，用于验证其他字符串
 #m = pat.search("CBA")          #此处字符串为被校验的字符串,返回值为 None
 #m = pat.search("CBAA")  #返回值为<re.Match object; span=(2, 4), match='AA'>
                          #python的区间范围为左闭右开，即包含左端点，不包含右端点。
                          #（0，4）表示包含0,1,2,3
-m = pat.search("CBAABCAA")   #返回值为<re.Match object; span=(2, 4), match='AA'>
-print(m)
+#m = pat.search("CBAABCAA")   #返回值为 <re.Match object; span=(2, 4), match='AA'>
 
 
+#不用模式对象,直接调用re
+# m= re.search("asd","Aasd")  #前面的字符串是规则（模板），后面的字符串是被校验的对象
+#                             #返回值 <re.Match object; span=(1, 4), match='asd'>
+# print(m)
 
 
+#print(re.findall("a","ADSGJaDGHBa"))     #前字符串为匹配规则（正则表达式），后字符串为被校验的字符串
+                                          #把符合的结果摘进返回列表,返回值为['a', 'a']
+
+#print(re.findall("[A-Z]","ADSGJaDGHBa")) #返回值为['A', 'D', 'S', 'G', 'J', 'D', 'G', 'H', 'B']
+
+#print(re.findall("[A-Z]+","ADSGJaDGHBa"))  #return: ['ADSGJ', 'DGHB']
 
 
+#sub  替换
 
+print(re.sub("a","A","asfggsvxdgasdbaaa"))     #在第三项中的字符串中，找到第一项中的字符‘a’,用第二项中的字符“A”替换
+#return:  AsfggsvxdgAsdbAAA
 
-
+#建议在正则表达式中，被比较的字符串前面加上r,不用担心转义字符的问题,可以避免意外
+a = r"\asdsafg'\'"   #return: \asdsafg'\'
+print(a)
 
 
 
