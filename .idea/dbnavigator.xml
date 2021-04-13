@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -26,7 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="a34c1454-28c4-4a4f-a61f-b4afaea41abf">
-        <schema name="mysqlite" object-types="dataset trigger, view, index, column, constraint, table" />
+        <schema name="DoubanMovieTop250" object-types="column, dataset trigger, table, constraint, view, index" />
       </connection>
     </loaded-nodes>
   </component>
@@ -42,16 +42,24 @@
     <connection id="a34c1454-28c4-4a4f-a61f-b4afaea41abf" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="a34c1454-28c4-4a4f-a61f-b4afaea41abf" dataset="DoubanMovieTop250.sqlite_sequence" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="a34c1454-28c4-4a4f-a61f-b4afaea41abf" dataset=".company" active-filter-id="EMPTY_FILTER">
       <filter id="238ac4f4-3657-42c4-a81e-0b223f01a6ca" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="address" operator="=" value="" active="true" />
       </filter>
     </filter-actions>
-    <filter-actions connection-id="a34c1454-28c4-4a4f-a61f-b4afaea41abf" dataset="mysqlite.company" active-filter-id="">
+    <filter-actions connection-id="a34c1454-28c4-4a4f-a61f-b4afaea41abf" dataset="testmovie.sqlite_sequence" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="a34c1454-28c4-4a4f-a61f-b4afaea41abf" dataset="testmovie.DoubanMovieTop250" active-filter-id="EMPTY_FILTER">
+      <filter id="6c580a0d-15b1-4686-ad21-01b62fe06dc9" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="a34c1454-28c4-4a4f-a61f-b4afaea41abf" dataset="mysqlite.company" active-filter-id="EMPTY_FILTER">
       <filter id="913d5beb-b054-446a-82d7-4515549d68ca" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="address" operator="=" value="" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="a34c1454-28c4-4a4f-a61f-b4afaea41abf" dataset="DoubanMovieTop250.DoubanMovieTop250" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -97,7 +105,7 @@
           <database value="database" />
           <files>
             <file path="sqlite.db" schema="main" />
-            <file path="C:\Users\wweiw\PycharmProjects\douban\test\test_sqlite.db" schema="mysqlite" />
+            <file path="C:\Users\wweiw\PycharmProjects\douban\Douban_Movie_Top250.db" schema="DoubanMovieTop250" />
           </files>
           <type value="NONE" />
           <user value="" />

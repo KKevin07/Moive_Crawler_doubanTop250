@@ -11,9 +11,20 @@ def main():
     baseurl="https://movie.douban.com/top250?start="
     #1.爬取网页
     datalist=getData(baseurl)
-    savepath=".\\Douban_Movie_Top250.xls"
+
+    ## Excel方式第一行： xlwt下Excel方式的路径参数
+    #savepath=".\\Douban_Movie_Top250.xls"  #调用xlwt库，用Excel表格方式保存在当前文件夹下
+
+    ##数据库方式
+    dbpath = "Douban_Movie_Top250.db"
+
     #3.保存数据
-    saveData(datalist,savepath)
+
+    ## Excel方式第二行
+    #saveData(datalist,savepath)
+
+    ##数据库方式
+    saveDataToDB(datalist,dbpath)
 
     #askURL("https://movie.douban.com/top250?start=")
 
@@ -145,6 +156,8 @@ def askURL(url):
 
 
 #函数3.保存数据
+
+# (Excel方式)
 def saveData(datalist,savepath):
     print("save...")    #输出结果提示信息
     book = xlwt.Workbook(encoding="utf-8",style_compression=0)            # 创建workbook对象
@@ -161,7 +174,67 @@ def saveData(datalist,savepath):
 
     book.save(savepath)   #保存
 
+#(sqlite数据库方式)
+def saveDataToDB(datalist,dbpath):
+    init_db(dbpath)
+    conn = sqlite3.connect(dbpath)
+    cur = conn.cursor()     #获取游标(可操作的对象)
+
+    for data in datalist:
+        for index in range(len(data)):
+            if index == 4 or index == 5:
+                continue
+
+            data[index] = '"'+data[index]+'"'
+        sql = '''
+                insert into DoubanMovieTop250(
+                info_link,pic_link,chname,forname,score,ratingnum,instroduction,info)
+                values(%s)            
+            '''%','.join(data)          #‘%’填补sql语句
+        print(sql)
+        cur.execute(sql)
+        conn.commit()
+    cur.close()
+    conn.close()
+
+
+
+
+def init_db(dbpath):
+
+    #创建数据表
+    sql = '''
+        create table DoubanMovieTop250
+        (
+        id integer primary key autoincrement,
+        info_link text,
+        pic_link text,
+        chname varchar,
+        forname varchar,
+        score numeric,
+        ratingnum numeric,
+        instroduction text,
+        info text           
+        )
+    
+    
+    '''
+    conn = sqlite3.connect(dbpath)
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    conn.commit()
+    conn.close()
+
+
+
+
+
+
+
+
+#主程序，执行main()
 if __name__ == "__main__":   #当程序执行时
 #调用函数
     main()
+    #init_db("test_movie.db")  #测试用
     print("电影数据爬取工作已完毕")
